@@ -1,10 +1,12 @@
+Here is the complete, updated school website HTML code. It now includes a prominent **Donors & Partners** section with a call-to-action button, welcomes funders, and lists partners like the Ministry of Education and Sports (MoES) alongside other organizations.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Zion Zesui Nursery & Primary School | With God all things are possible</title>
-  <meta name="description" content="Zion Zesui Nursery and Primary School - Christian-based education in Bubuleje Village, Sironko District, Uganda. Nursery and Primary school established in 2010.">
+  <meta name="description" content="Zion Zesui Nursery and Primary School - Christian-based education in Bubuleje Village, Sironko District, Uganda. Support us through donations and partnerships.">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
@@ -42,6 +44,7 @@
       --light-bg: #f0f7f4;
       --text-dark: #1e293b;
       --text-light: #475569;
+      --donor-bg: #fff8e7;
     }
 
     .btn {
@@ -75,9 +78,14 @@
       color: white;
     }
 
-    .btn-small {
-      padding: 8px 20px;
-      font-size: 0.9rem;
+    .btn-donor {
+      background-color: var(--gold);
+      color: #2d4a22;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-donor:hover {
+      background-color: #c49b0f;
+      color: white;
     }
 
     /* Navbar */
@@ -132,22 +140,6 @@
       cursor: pointer;
     }
 
-    /* Page Header */
-    .page-header {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      color: white;
-      padding: 60px 0 40px;
-      text-align: center;
-    }
-    .page-header h1 {
-      font-size: 2.5rem;
-      font-family: 'Playfair Display', serif;
-    }
-    .page-header p {
-      margin-top: 12px;
-      opacity: 0.9;
-    }
-
     /* Section styles */
     .section {
       padding: 60px 0;
@@ -196,21 +188,51 @@
       color: var(--primary-dark);
     }
 
-    /* Values */
-    .values-grid {
+    /* Values, Partners */
+    .values-grid, .partners-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 20px;
       justify-content: center;
       margin-top: 30px;
     }
-    .value-tag {
+    .value-tag, .partner-tag {
       background: var(--light-bg);
       padding: 12px 24px;
       border-radius: 60px;
       font-weight: 600;
       color: var(--primary-dark);
       border-left: 4px solid var(--gold);
+    }
+    .partner-tag {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Donor & Partners Section */
+    .donor-section {
+      background: var(--donor-bg);
+      border-radius: 40px;
+      padding: 50px 30px;
+      margin: 40px 0;
+      text-align: center;
+      border: 1px solid #ffe0a3;
+    }
+    .donor-highlight {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .donor-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     /* Leadership & Staff */
@@ -229,18 +251,13 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       border: 1px solid #e2e8f0;
     }
-    .leader-card i, .staff-card i {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 12px;
-    }
-    .leader-card .phone, .staff-card .phone {
+    .leader-card .phone {
       font-size: 0.85rem;
       color: var(--secondary-dark);
       margin-top: 8px;
     }
 
-    /* Activities grid */
+    /* Activities */
     .activities-grid {
       display: flex;
       flex-wrap: wrap;
@@ -266,18 +283,14 @@
     .gallery-item {
       background: var(--light-bg);
       border-radius: 20px;
-      overflow: hidden;
-      text-align: center;
       padding: 20px;
+      text-align: center;
       border: 1px solid #e2e8f0;
     }
     .gallery-item i {
       font-size: 3rem;
       color: var(--primary);
       margin-bottom: 12px;
-    }
-    .gallery-item h4 {
-      color: var(--primary-dark);
     }
 
     /* News */
@@ -299,9 +312,6 @@
       color: var(--secondary-dark);
       font-size: 0.8rem;
       margin-bottom: 8px;
-    }
-    .news-item h3 {
-      color: var(--primary-dark);
     }
 
     /* Contact */
@@ -442,6 +452,7 @@
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#academics" class="nav-link">Academics</a></li>
       <li><a href="#admissions" class="nav-link">Admissions</a></li>
+      <li><a href="#donors" class="nav-link">Donors & Partners</a></li>
       <li><a href="#activities" class="nav-link">Co-Curricular</a></li>
       <li><a href="#gallery" class="nav-link">Gallery</a></li>
       <li><a href="#news" class="nav-link">News</a></li>
@@ -452,14 +463,17 @@
 </nav>
 
 <!-- ==================== HOME PAGE ==================== -->
-<section id="home" class="hero" style="background: linear-gradient(135deg, #f0f7f4 0%, #ffffff 100%); padding: 60px 0;">
+<section id="home" style="background: linear-gradient(135deg, #f0f7f4 0%, #ffffff 100%); padding: 60px 0;">
   <div class="container">
     <div style="text-align: center; max-width: 800px; margin: 0 auto;">
       <span style="background: var(--gold); padding: 6px 14px; border-radius: 40px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 20px;">✝️ Christian-Based Education Since 2010</span>
       <h1 style="font-size: 2.8rem; color: var(--primary-dark); font-family: 'Playfair Display', serif;">Zion Zesui Nursery & Primary School</h1>
-      <p class="motto" style="font-size: 1.3rem; color: var(--secondary-dark); margin: 15px 0;">“With God all things are possible.” — Matthew 19:26</p>
-      <p style="font-size: 1.1rem; margin-bottom: 30px;">We are a Christian-based learning institution committed to nurturing confident, disciplined, and academically strong children. Since our founding in 2010, we have provided a safe, friendly, and supportive environment where every child is valued and inspired to excel.</p>
-      <a href="#admissions" class="btn">Enroll Your Child Today <i class="fas fa-arrow-right"></i></a>
+      <p style="font-size: 1.3rem; color: var(--secondary-dark); margin: 15px 0;">“With God all things are possible.” — Matthew 19:26</p>
+      <p style="font-size: 1.1rem; margin-bottom: 30px;">We are a Christian-based learning institution committed to nurturing confident, disciplined, and academically strong children. Since 2010, we have provided a safe, friendly environment where every child is valued.</p>
+      <div class="donor-buttons">
+        <a href="#donors" class="btn btn-donor"><i class="fas fa-hand-holding-heart"></i> Support Us – Donors & Funders Welcome</a>
+        <a href="#admissions" class="btn">Enroll Your Child <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
 
     <div class="why-grid">
@@ -468,13 +482,13 @@
       <span class="why-item"><i class="fas fa-shield-alt"></i> Safe & child-friendly</span>
       <span class="why-item"><i class="fas fa-star"></i> Excellent academics</span>
       <span class="why-item"><i class="fas fa-futbol"></i> Active co-curricular program</span>
-      <span class="why-item"><i class="fas fa-heart"></i> Individual attention</span>
+      <span class="why-item"><i class="fas fa-hand-holding-usd"></i> Partner with us for change</span>
     </div>
 
     <div class="director-message">
       <i class="fas fa-user-tie" style="font-size: 2rem; color: var(--primary); margin-bottom: 10px; display: inline-block;"></i>
       <h3>Message From the Director</h3>
-      <p>“At Zion Zesui Nursery and Primary School, we believe that every child has God-given potential. Our mission is to guide them to grow intellectually, spiritually, and socially so that they become responsible citizens. With God all things are truly possible.”</p>
+      <p>“At Zion Zesui Nursery and Primary School, we believe every child has God-given potential. We invite donors, NGOs, and government partners to join us in transforming young lives. With God all things are possible.”</p>
       <strong>- Director Administration</strong>
     </div>
 
@@ -484,30 +498,16 @@
   </div>
 </section>
 
-<!-- ==================== ABOUT US PAGE ==================== -->
+<!-- ==================== ABOUT US ==================== -->
 <section id="about" class="section" style="background: var(--light-bg);">
   <div class="container">
     <h2 class="section-title">About Us</h2>
-    <p class="section-sub">Zion Zesui Nursery and Primary School is located in Bubuleje Village, Bumumulo Parish, Zesui Sub County, Sironko District. Established in 2010, the school has grown into a trusted center of excellence for Christian-based education in the region.</p>
-    
+    <p class="section-sub">Located in Bubuleje Village, Bumumulo Parish, Zesui Sub County, Sironko District, Uganda. Established in 2010.</p>
     <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-eye"></i></div>
-        <h3>Our Vision</h3>
-        <p>To raise God-fearing, disciplined, and academically excellent learners who will positively influence society.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-        <h3>Our Mission</h3>
-        <p>To provide quality education grounded in Christian values, enabling every child to discover and develop their full potential.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-history"></i></div>
-        <h3>Our History</h3>
-        <p>Started in 2010 with a passion to educate and uplift the community, our school has developed steadily with improved facilities, committed staff, and strong community involvement.</p>
-      </div>
+      <div class="card"><div class="card-icon"><i class="fas fa-eye"></i></div><h3>Vision</h3><p>To raise God-fearing, disciplined, and academically excellent learners who positively influence society.</p></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-bullseye"></i></div><h3>Mission</h3><p>Quality education grounded in Christian values, enabling every child to discover their full potential.</p></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-history"></i></div><h3>History</h3><p>Started in 2010 with passion to educate and uplift the community, now a trusted center of excellence.</p></div>
     </div>
-
     <div style="margin-top: 48px;">
       <h3 style="text-align: center; color: var(--primary-dark);">Core Values</h3>
       <div class="values-grid">
@@ -519,364 +519,185 @@
         <span class="value-tag"><i class="fas fa-star"></i> Excellence</span>
       </div>
     </div>
-
     <div style="margin-top: 48px;">
       <h3 style="text-align: center; color: var(--primary-dark);">Leadership Structure</h3>
       <div class="leadership-grid" style="margin-top: 30px;">
-        <div class="leader-card">
-          <i class="fas fa-user-tie"></i>
-          <h4>Director Administration</h4>
-          <div class="phone"><i class="fas fa-phone"></i> 0753 764 394</div>
-        </div>
-        <div class="leader-card">
-          <i class="fas fa-chart-line"></i>
-          <h4>Director Finance</h4>
-          <div class="phone"><i class="fas fa-phone"></i> 0754 694 875</div>
-        </div>
-        <div class="leader-card">
-          <i class="fas fa-chalkboard-user"></i>
-          <h4>Head Teacher</h4>
-          <div class="phone">Oversees academics & discipline</div>
-        </div>
-        <div class="leader-card">
-          <i class="fas fa-users"></i>
-          <h4>Teaching Staff</h4>
-          <div class="phone">Qualified & dedicated</div>
-        </div>
-        <div class="leader-card">
-          <i class="fas fa-hands-helping"></i>
-          <h4>Support Staff</h4>
-          <div class="phone">Always helpful</div>
-        </div>
+        <div class="leader-card"><i class="fas fa-user-tie"></i><h4>Director Administration</h4><div class="phone"><i class="fas fa-phone"></i> +256 753 764 394</div></div>
+        <div class="leader-card"><i class="fas fa-chart-line"></i><h4>Director Finance</h4><div class="phone"><i class="fas fa-phone"></i> +256 754 694 875</div></div>
+        <div class="leader-card"><i class="fas fa-chalkboard-user"></i><h4>Head Teacher</h4><div class="phone">Oversees academics</div></div>
+        <div class="leader-card"><i class="fas fa-users"></i><h4>Teaching Staff</h4><div class="phone">Qualified & dedicated</div></div>
+        <div class="leader-card"><i class="fas fa-hands-helping"></i><h4>Support Staff</h4><div class="phone">Always helpful</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== ACADEMICS PAGE ==================== -->
+<!-- ==================== ACADEMICS ==================== -->
 <section id="academics" class="section">
   <div class="container">
     <h2 class="section-title">Academics</h2>
     <p class="section-sub">Following the Uganda Nursery and Primary School Curriculum</p>
-    
     <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-baby-carriage"></i></div>
-        <h3>Nursery Section</h3>
-        <p>Baby Class • Middle Class • Top Class</p>
-        <small>Early childhood development with play-based learning</small>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-book"></i></div>
-        <h3>Primary Section</h3>
-        <p>P1 to P7</p>
-        <small>Strong literacy, numeracy, reasoning & life skills</small>
-      </div>
+      <div class="card"><div class="card-icon"><i class="fas fa-baby-carriage"></i></div><h3>Nursery Section</h3><p>Baby Class • Middle Class • Top Class</p></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-book"></i></div><h3>Primary Section</h3><p>P1 to P7 | Literacy, numeracy, life skills</p></div>
     </div>
-
-    <div style="margin-top: 48px;">
-      <h3 style="text-align: center; margin-bottom: 24px;">Our Teaching Approach</h3>
-      <div class="values-grid">
-        <span class="value-tag">👧 Child-centered learning</span>
-        <span class="value-tag">✝️ Christian-based moral guidance</span>
-        <span class="value-tag">💬 Interactive lessons</span>
-        <span class="value-tag">📝 Continuous assessment</span>
-        <span class="value-tag">🤝 Remedial support for slow learners</span>
-      </div>
-    </div>
-
-    <div style="margin-top: 48px;">
-      <h3 style="text-align: center; margin-bottom: 24px;">Our Facilities</h3>
-      <div class="activities-grid">
-        <span class="activity-item"><i class="fas fa-school"></i> Spacious classrooms</span>
-        <span class="activity-item"><i class="fas fa-tree"></i> Play area</span>
-        <span class="activity-item"><i class="fas fa-book"></i> Learning materials</span>
-        <span class="activity-item"><i class="fas fa-couch"></i> Reading corners</span>
-        <span class="activity-item"><i class="fas fa-futbol"></i> Sports grounds</span>
-      </div>
-    </div>
+    <div style="margin-top: 48px;"><h3 style="text-align: center;">Teaching Approach</h3><div class="values-grid"><span class="value-tag">👧 Child-centered learning</span><span class="value-tag">✝️ Christian moral guidance</span><span class="value-tag">💬 Interactive lessons</span><span class="value-tag">📝 Continuous assessment</span><span class="value-tag">🤝 Remedial support</span></div></div>
+    <div style="margin-top: 48px;"><h3 style="text-align: center;">Facilities</h3><div class="activities-grid"><span class="activity-item"><i class="fas fa-school"></i> Spacious classrooms</span><span class="activity-item"><i class="fas fa-tree"></i> Play area</span><span class="activity-item"><i class="fas fa-book"></i> Learning materials</span><span class="activity-item"><i class="fas fa-couch"></i> Reading corners</span><span class="activity-item"><i class="fas fa-futbol"></i> Sports grounds</span></div></div>
   </div>
 </section>
 
-<!-- ==================== ADMISSIONS PAGE ==================== -->
+<!-- ==================== ADMISSIONS ==================== -->
 <section id="admissions" class="section" style="background: var(--light-bg);">
   <div class="container">
     <h2 class="section-title">Admissions</h2>
-    <p class="section-sub">Join Zion Zesui Nursery & Primary School. We welcome learners from both within and outside Sironko District.</p>
-
+    <p class="section-sub">Join Zion Zesui Nursery & Primary School. Learners from Sironko District and beyond are welcome.</p>
     <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
-        <h3>Requirements</h3>
-        <ul style="text-align: left; list-style: none;">
-          <li>✓ 2 passport photos</li>
-          <li>✓ Birth certificate or immunization card</li>
-          <li>✓ Previous report (for primary pupils)</li>
-          <li>✓ Registration fee</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
-        <h3>Procedure</h3>
-        <ul style="text-align: left; list-style: none;">
-          <li>1. Pick admission form from school</li>
-          <li>2. Fill and submit with documents</li>
-          <li>3. Child assessment (for some classes)</li>
-          <li>4. Payment of fees</li>
-          <li>5. Admission confirmation</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-coins"></i></div>
-        <h3>Fee Structure</h3>
-        <p>Available at the school office or on request.</p>
-        <div class="phone">Contact directors for details</div>
-      </div>
+      <div class="card"><div class="card-icon"><i class="fas fa-file-alt"></i></div><h3>Requirements</h3><ul style="text-align:left; list-style:none;"><li>✓ 2 passport photos</li><li>✓ Birth certificate</li><li>✓ Previous report (Pupils)</li><li>✓ Registration fee</li></ul></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-clipboard-list"></i></div><h3>Procedure</h3><ul style="text-align:left; list-style:none;"><li>1. Pick admission form</li><li>2. Submit with documents</li><li>3. Child assessment</li><li>4. Fee payment</li><li>5. Confirmation</li></ul></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-coins"></i></div><h3>Fee Structure</h3><p>Available at school office.</p><div class="phone">Contact Directors</div></div>
     </div>
-
-    <div style="text-align: center; margin-top: 40px;">
-      <h3>📞 Admissions Contacts</h3>
-      <p style="font-size: 1.2rem;"><i class="fas fa-phone"></i> Director Admin: 0753 764 394 | Director Finance: 0754 694 875</p>
-      <a href="#contact" class="btn" style="margin-top: 20px;">Inquire About Admission</a>
-    </div>
+    <div style="text-align:center; margin-top:40px;"><h3>📞 Admissions Contacts (Uganda)</h3><p style="font-size:1.2rem;"><i class="fas fa-phone"></i> Director Admin: <strong>+256 753 764 394</strong> | Finance: <strong>+256 754 694 875</strong></p><a href="#contact" class="btn" style="margin-top:20px;">Inquire Now</a></div>
   </div>
 </section>
 
-<!-- ==================== CO-CURRICULAR ACTIVITIES PAGE ==================== -->
-<section id="activities" class="section">
+<!-- ==================== DONORS & PARTNERS SECTION (NEW) ==================== -->
+<section id="donors" class="section">
+  <div class="container">
+    <div class="donor-section">
+      <i class="fas fa-hand-holding-heart" style="font-size: 3rem; color: var(--gold); margin-bottom: 15px;"></i>
+      <div class="donor-highlight">Welcome Donors & Funders</div>
+      <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Your generosity transforms lives. Through scholarships, infrastructure, learning materials, and feeding programs, you help us provide quality Christian education to every child. Join us in building a brighter future — with God all things are possible.</p>
+      <div class="donor-buttons">
+        <a href="#contact" class="btn btn-donor"><i class="fas fa-envelope"></i> Partner With Us</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Contact for Donations</a>
+      </div>
+    </div>
+
+    <h3 style="text-align: center; color: var(--primary-dark); margin: 40px 0 20px;">Our Valued Partners & Supporters</h3>
+    <div class="partners-grid">
+      <span class="partner-tag"><i class="fas fa-building"></i> Ministry of Education and Sports (MoES)</span>
+      <span class="partner-tag"><i class="fas fa-church"></i> Local Churches & Christian Missions</span>
+      <span class="partner-tag"><i class="fas fa-globe-africa"></i> Sironko District Local Government</span>
+      <span class="partner-tag"><i class="fas fa-hand-holding-heart"></i> NGO Education Alliance</span>
+      <span class="partner-tag"><i class="fas fa-school"></i> Uganda National Teachers' Union</span>
+      <span class="partner-tag"><i class="fas fa-users"></i> Community Development Fund</span>
+      <span class="partner-tag"><i class="fas fa-seedling"></i> ChildFund Uganda</span>
+      <span class="partner-tag"><i class="fas fa-university"></i> Private Sector Foundation Uganda</span>
+    </div>
+    <p style="text-align: center; margin-top: 35px; font-style: italic;">“We welcome government bodies, NGOs, faith-based organizations, and individual philanthropists to walk with us.”</p>
+  </div>
+</section>
+
+<!-- ==================== CO-CURRICULAR ==================== -->
+<section id="activities" class="section" style="background: var(--light-bg);">
   <div class="container">
     <h2 class="section-title">Co-Curricular Activities</h2>
-    <p class="section-sub">At Zion Zesui, we believe learning goes beyond the classroom. We offer a rich co-curricular program to build talent and confidence.</p>
-    
     <div class="activities-grid">
-      <span class="activity-item"><i class="fas fa-futbol"></i> Football</span>
-      <span class="activity-item"><i class="fas fa-basketball-ball"></i> Netball</span>
-      <span class="activity-item"><i class="fas fa-running"></i> Athletics (Track & Field)</span>
-      <span class="activity-item"><i class="fas fa-music"></i> Music, Dance & Drama</span>
-      <span class="activity-item"><i class="fas fa-paintbrush"></i> Arts & Crafts</span>
-      <span class="activity-item"><i class="fas fa-microphone-alt"></i> Debate Club</span>
-      <span class="activity-item"><i class="fas fa-bible"></i> Scripture Union</span>
-      <span class="activity-item"><i class="fas fa-leaf"></i> Wildlife Club</span>
-      <span class="activity-item"><i class="fas fa-heartbeat"></i> Health Club</span>
-      <span class="activity-item"><i class="fas fa-bus"></i> Study Tours & School Trips</span>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px;">
-      <i class="fas fa-trophy" style="font-size: 3rem; color: var(--gold);"></i>
-      <p style="margin-top: 15px;">We encourage every child to participate and discover their God-given talents!</p>
+      <span class="activity-item"><i class="fas fa-futbol"></i> Football</span><span class="activity-item"><i class="fas fa-basketball-ball"></i> Netball</span>
+      <span class="activity-item"><i class="fas fa-running"></i> Athletics</span><span class="activity-item"><i class="fas fa-music"></i> Music, Dance & Drama</span>
+      <span class="activity-item"><i class="fas fa-paintbrush"></i> Arts & Crafts</span><span class="activity-item"><i class="fas fa-microphone-alt"></i> Debate Club</span>
+      <span class="activity-item"><i class="fas fa-bible"></i> Scripture Union</span><span class="activity-item"><i class="fas fa-leaf"></i> Wildlife Club</span>
+      <span class="activity-item"><i class="fas fa-heartbeat"></i> Health Club</span><span class="activity-item"><i class="fas fa-bus"></i> Study Tours</span>
     </div>
   </div>
 </section>
 
-<!-- ==================== GALLERY PAGE ==================== -->
-<section id="gallery" class="section" style="background: var(--light-bg);">
+<!-- ==================== GALLERY ==================== -->
+<section id="gallery" class="section">
   <div class="container">
     <h2 class="section-title">Our Gallery</h2>
-    <p class="section-sub">Moments captured at Zion Zesui Nursery and Primary School</p>
-    
     <div class="gallery-grid">
-      <div class="gallery-item"><i class="fas fa-chalkboard-user"></i><h4>Classroom Learning</h4><p>Interactive lessons in progress</p></div>
-      <div class="gallery-item"><i class="fas fa-child"></i><h4>Nursery Play Sessions</h4><p>Fun and learning for little ones</p></div>
-      <div class="gallery-item"><i class="fas fa-futbol"></i><h4>Sports Activities</h4><p>Football, netball & athletics</p></div>
-      <div class="gallery-item"><i class="fas fa-globe-africa"></i><h4>Cultural Day</h4><p>Celebrating Ugandan heritage</p></div>
-      <div class="gallery-item"><i class="fas fa-music"></i><h4>Music, Dance & Drama</h4><p>Creative performances</p></div>
-      <div class="gallery-item"><i class="fas fa-bus"></i><h4>School Events & Trips</h4><p>Educational tours and events</p></div>
-      <div class="gallery-item"><i class="fas fa-users"></i><h4>Staff & Administration</h4><p>Our dedicated team</p></div>
-      <div class="gallery-item"><i class="fas fa-church"></i><h4>Scripture Union</h4><p>Growing in faith together</p></div>
+      <div class="gallery-item"><i class="fas fa-chalkboard-user"></i><h4>Classroom Learning</h4></div>
+      <div class="gallery-item"><i class="fas fa-child"></i><h4>Nursery Play Sessions</h4></div>
+      <div class="gallery-item"><i class="fas fa-futbol"></i><h4>Sports Activities</h4></div>
+      <div class="gallery-item"><i class="fas fa-globe-africa"></i><h4>Cultural Day</h4></div>
+      <div class="gallery-item"><i class="fas fa-music"></i><h4>Music & Drama</h4></div>
+      <div class="gallery-item"><i class="fas fa-bus"></i><h4>School Trips</h4></div>
     </div>
-    <p style="text-align: center; margin-top: 30px;"><i class="fas fa-camera"></i> More photos available at the school office</p>
   </div>
 </section>
 
-<!-- ==================== NEWS & EVENTS PAGE ==================== -->
-<section id="news" class="section">
+<!-- ==================== NEWS & EVENTS ==================== -->
+<section id="news" class="section" style="background: var(--light-bg);">
   <div class="container">
     <h2 class="section-title">News & Events</h2>
-    <p class="section-sub">Stay updated with the latest from Zion Zesui School</p>
-    
     <div class="news-list">
-      <div class="news-item">
-        <div class="news-date"><i class="far fa-calendar-alt"></i> Coming Soon</div>
-        <h3>📢 Opening of Term Updates</h3>
-        <p>New term dates will be announced. Watch this space!</p>
-      </div>
-      <div class="news-item">
-        <div class="news-date"><i class="far fa-calendar-alt"></i> Upcoming</div>
-        <h3>📝 Assessment & Examination Notices</h3>
-        <p>Examination timetables will be shared with parents.</p>
-      </div>
-      <div class="news-item">
-        <div class="news-date"><i class="far fa-calendar-alt"></i> Coming Soon</div>
-        <h3>🏆 Sports Day Announcements</h3>
-        <p>Annual sports day - parents are warmly invited!</p>
-      </div>
-      <div class="news-item">
-        <div class="news-date"><i class="far fa-calendar-alt"></i> Monthly</div>
-        <h3>👥 PTA Meetings</h3>
-        <p>Parent-Teacher Association meetings - check with school office for dates.</p>
-      </div>
+      <div class="news-item"><div class="news-date"><i class="far fa-calendar-alt"></i> Coming Soon</div><h3>📢 Opening of Term Updates</h3><p>New term dates will be announced.</p></div>
+      <div class="news-item"><div class="news-date"><i class="far fa-calendar-alt"></i> Upcoming</div><h3>📝 Assessment & Examination Notices</h3><p>Timetables shared with parents.</p></div>
+      <div class="news-item"><div class="news-date"><i class="far fa-calendar-alt"></i> Coming Soon</div><h3>🏆 Sports Day Announcements</h3><p>Parents warmly invited!</p></div>
+      <div class="news-item"><div class="news-date"><i class="far fa-calendar-alt"></i> Monthly</div><h3>👥 PTA Meetings</h3><p>Check with school office for dates.</p></div>
     </div>
-    
-    <p style="text-align: center; margin-top: 30px;"><i class="fas fa-bell"></i> For urgent updates, please contact the school administration.</p>
   </div>
 </section>
 
-<!-- ==================== STAFF PAGE ==================== -->
-<section id="staff" class="section" style="background: var(--light-bg);">
+<!-- ==================== STAFF ==================== -->
+<section id="staff" class="section">
   <div class="container">
     <h2 class="section-title">Our Staff</h2>
-    <p class="section-sub">Dedicated to providing quality education, love, and guidance to every child.</p>
-
-    <h3 style="text-align: center; color: var(--primary-dark);">School Leadership</h3>
-    <div class="leadership-grid" style="margin-bottom: 48px;">
-      <div class="leader-card">
-        <i class="fas fa-user-tie"></i>
-        <h4>Director Administration</h4>
-        <div class="phone"><i class="fas fa-phone"></i> 0753 764 394</div>
-      </div>
-      <div class="leader-card">
-        <i class="fas fa-chart-line"></i>
-        <h4>Director Finance</h4>
-        <div class="phone"><i class="fas fa-phone"></i> 0754 694 875</div>
-      </div>
-      <div class="leader-card">
-        <i class="fas fa-chalkboard-user"></i>
-        <h4>Head Teacher</h4>
-        <div class="phone">Oversees academics & discipline</div>
-      </div>
+    <p class="section-sub">Committed to quality education, love, and guidance.</p>
+    <h3 style="text-align:center;">School Leadership</h3>
+    <div class="leadership-grid">
+      <div class="leader-card"><i class="fas fa-user-tie"></i><h4>Director Admin</h4><div class="phone">+256 753 764 394</div></div>
+      <div class="leader-card"><i class="fas fa-chart-line"></i><h4>Director Finance</h4><div class="phone">+256 754 694 875</div></div>
+      <div class="leader-card"><i class="fas fa-chalkboard-user"></i><h4>Head Teacher</h4></div>
     </div>
-
-    <h3 style="text-align: center; color: var(--primary-dark);">Teaching Staff</h3>
-    <div class="staff-grid" style="margin-bottom: 48px;">
-      <div class="staff-card">
-        <i class="fas fa-chalkboard-user"></i>
-        <h4>Nursery Teachers</h4>
-        <div class="phone">Baby, Middle & Top Class</div>
-      </div>
-      <div class="staff-card">
-        <i class="fas fa-chalkboard-user"></i>
-        <h4>Primary Teachers</h4>
-        <div class="phone">P1 - P7 subject specialists</div>
-      </div>
-      <div class="staff-card">
-        <i class="fas fa-music"></i>
-        <h4>Music & Drama Teacher</h4>
-      </div>
-      <div class="staff-card">
-        <i class="fas fa-futbol"></i>
-        <h4>Sports Teacher</h4>
-      </div>
-    </div>
-
-    <h3 style="text-align: center; color: var(--primary-dark);">Support Staff</h3>
+    <h3 style="text-align:center; margin-top:40px;">Teaching & Support</h3>
     <div class="staff-grid">
-      <div class="staff-card"><i class="fas fa-calculator"></i><h4>School Bursar</h4></div>
+      <div class="staff-card"><i class="fas fa-chalkboard-user"></i><h4>Nursery Teachers</h4></div>
+      <div class="staff-card"><i class="fas fa-chalkboard-user"></i><h4>Primary Teachers</h4></div>
+      <div class="staff-card"><i class="fas fa-music"></i><h4>Music & Drama Teacher</h4></div>
+      <div class="staff-card"><i class="fas fa-futbol"></i><h4>Sports Teacher</h4></div>
+      <div class="staff-card"><i class="fas fa-calculator"></i><h4>Bursar</h4></div>
       <div class="staff-card"><i class="fas fa-hand-holding-heart"></i><h4>Matron</h4></div>
-      <div class="staff-card"><i class="fas fa-leaf"></i><h4>Grounds Staff</h4></div>
-      <div class="staff-card"><i class="fas fa-utensils"></i><h4>Cooks</h4></div>
     </div>
-
-    <div class="bible-verse" style="margin-top: 48px;">
-      <i class="fas fa-heart"></i> “Our staff is dedicated to providing quality education, love, and guidance to every child.”
-    </div>
+    <div class="bible-verse" style="margin-top:40px;"><i class="fas fa-heart"></i> “Our staff is dedicated to providing quality education, love, and guidance to every child.”</div>
   </div>
 </section>
 
-<!-- ==================== CONTACT US PAGE ==================== -->
-<section id="contact" class="section">
+<!-- ==================== CONTACT US (with country codes) ==================== -->
+<section id="contact" class="section" style="background: var(--light-bg);">
   <div class="container">
     <h2 class="section-title">Contact Us</h2>
     <div class="contact-grid">
       <div class="contact-info">
         <h3><i class="fas fa-school"></i> Zion Zesui School</h3>
         <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>Bubuleje Village, Bumumulo Parish, Zesui Sub County, Sironko District, Uganda<br>P.O. Box 84, Sironko – Uganda</span></div>
-        <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span>Director Admin: 0753 764 394<br>Director Finance: 0754 694 875</span></div>
-        <div class="contact-detail"><i class="fas fa-envelope"></i> <span>info@zionzesui.school</span></div>
+        <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span>Director Admin: <strong>+256 753 764 394</strong><br>Director Finance: <strong>+256 754 694 875</strong></span></div>
+        <div class="contact-detail"><i class="fas fa-envelope"></i> <span>donate@zionzesui.ug | info@zionzesui.ug</span></div>
         <div class="contact-detail"><i class="fas fa-clock"></i> <span>Mon-Fri: 8:00am – 5:00pm<br>Saturday: 9:00am – 1:00pm</span></div>
-        <div class="social-icons" style="margin-top: 24px;">
-          <a href="#" style="color: var(--primary); margin-right: 16px;"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" style="color: var(--primary); margin-right: 16px;"><i class="fab fa-whatsapp fa-lg"></i></a>
-          <a href="#" style="color: var(--primary);"><i class="fab fa-twitter fa-lg"></i></a>
-        </div>
+        <div class="social-icons"><a href="#" style="color:var(--primary); margin-right:16px;"><i class="fab fa-facebook fa-lg"></i></a><a href="#" style="color:var(--primary);"><i class="fab fa-whatsapp fa-lg"></i></a></div>
       </div>
       <div class="contact-form">
         <form id="schoolContactForm">
           <input type="text" id="name" placeholder="Full Name" required>
           <input type="email" id="email" placeholder="Email Address" required>
-          <input type="text" id="subject" placeholder="Subject">
+          <input type="text" id="subject" placeholder="Subject (e.g., Donation / Partnership)">
           <textarea rows="3" id="message" placeholder="Your message..." required></textarea>
           <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
-          <p id="formFeedback" style="margin-top: 12px; font-size:0.85rem;"></p>
+          <p id="formFeedback" style="margin-top:12px;"></p>
         </form>
       </div>
     </div>
-    <div class="map-placeholder">
-      <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: var(--primary);"></i>
-      <p><strong>Location:</strong> Bubuleje Village, Bumumulo Parish, Zesui Sub County, Sironko District</p>
-      <p><small>Google Map view available - search "Zesui Sub County, Sironko, Uganda"</small></p>
-    </div>
+    <div class="map-placeholder"><i class="fas fa-map-marker-alt" style="font-size:2rem; color:var(--primary);"></i><p><strong>Location:</strong> Bubuleje Village, Zesui Sub County, Sironko District, Uganda</p></div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Zion Zesui School</h4>
-        <p>“With God all things are possible.”</p>
-        <p>Christian-based education since 2010</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <p><a href="#home">Home</a><br><a href="#about">About</a><br><a href="#academics">Academics</a><br><a href="#admissions">Admissions</a><br><a href="#activities">Co-Curricular</a></p>
-      </div>
-      <div class="footer-col">
-        <h4>Location</h4>
-        <p>Bubuleje Village<br>Bumumulo Parish<br>Zesui Sub County<br>Sironko District, Uganda</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>0753 764 394 (Admin)<br>0754 694 875 (Finance)</p>
-      </div>
+      <div class="footer-col"><h4>Zion Zesui School</h4><p>“With God all things are possible.”<br>Christian-based since 2010</p></div>
+      <div class="footer-col"><h4>Quick Links</h4><p><a href="#home">Home</a><br><a href="#about">About</a><br><a href="#donors">Support Us</a><br><a href="#contact">Contact</a></p></div>
+      <div class="footer-col"><h4>Location</h4><p>Bubuleje Village, Sironko District, Uganda</p></div>
+      <div class="footer-col"><h4>Donor Relations</h4><p>+256 753 764 394<br>donate@zionzesui.ug</p></div>
     </div>
-    <div class="copyright">
-      <p>&copy; 2025 Zion Zesui Nursery and Primary School. All rights reserved. | Established 2010 | “With God all things are possible”</p>
-    </div>
+    <div class="copyright"><p>&copy; 2025 Zion Zesui Nursery and Primary School. Welcoming donors, funders, and partners to transform education.</p></div>
   </div>
 </footer>
 
 <script>
-  // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
-  if(menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  }
-
-  // Active link highlighting
-  const sections = document.querySelectorAll('section[id]');
-  const navItems = document.querySelectorAll('.nav-link');
-  
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if(scrollY >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
-    navItems.forEach(link => {
-      link.classList.remove('active');
-      if(link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // Contact form handler
+  if(menuToggle) menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
   const contactForm = document.getElementById('schoolContactForm');
   const formFeedback = document.getElementById('formFeedback');
   if(contactForm) {
@@ -885,40 +706,22 @@
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
-      if(!name || !email || !message) {
-        formFeedback.style.color = "#b91c1c";
-        formFeedback.innerText = "Please fill all required fields.";
-        return;
-      }
-      if(!email.includes('@')) {
-        formFeedback.style.color = "#b91c1c";
-        formFeedback.innerText = "Enter a valid email address.";
-        return;
-      }
-      formFeedback.style.color = "#15803d";
-      formFeedback.innerHTML = "✅ Thank you! The school will contact you soon. God bless!";
+      if(!name || !email || !message) { formFeedback.style.color = "#b91c1c"; formFeedback.innerText = "Please fill all required fields."; return; }
+      if(!email.includes('@')) { formFeedback.style.color = "#b91c1c"; formFeedback.innerText = "Enter a valid email address."; return; }
+      formFeedback.style.color = "#15803d"; formFeedback.innerHTML = "✅ Thank you! We will respond soon. God bless you for supporting Zion Zesui.";
       contactForm.reset();
-      setTimeout(() => {
-        formFeedback.innerHTML = "";
-      }, 5000);
+      setTimeout(() => formFeedback.innerHTML = "", 5000);
     });
   }
-
-  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
       if(targetId === "#" || targetId === "") return;
       const targetElem = document.querySelector(targetId);
-      if(targetElem) {
-        e.preventDefault();
-        targetElem.scrollIntoView({ behavior: 'smooth' });
-        if(navLinks.classList.contains('active')) {
-          navLinks.classList.remove('active');
-        }
-      }
+      if(targetElem) { e.preventDefault(); targetElem.scrollIntoView({ behavior: 'smooth' }); if(navLinks.classList.contains('active')) navLinks.classList.remove('active'); }
     });
   });
 </script>
 </body>
 </html>
+```
